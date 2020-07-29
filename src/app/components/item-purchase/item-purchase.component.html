@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" /> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h2>Item purchase</h2>
+    <!-- <p>In this example, we use <code>.was-validated</code> to indicate what's missing before submitting the form:</p> -->
+    <form action="" id="myForm1" class="was-validated">
+
+      <div class="form-row">
+        <div class="col col-lg-3">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-sort-numeric-asc" style="color:#00cc6a"></i>
+                </div>
+              </div>
+              <input type="number" [formControl]="pid" class="form-control" id="id" placeholder="Enter ID" name="pid"
+                min="1000" max="9999" maxlength="4"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                readonly required>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-3">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-calendar" style="color:#00cc6a"></i>
+                </div>
+              </div>
+              <input type="date" [formControl]="pDate" class="form-control" id="date" placeholder="Enter Date"
+                name="pDate" required>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa fa-drivers-license" style="color:#00cc6a"></i>
+            </div>
+          </div>
+          <input type="text" [formControl]="pName" class="form-control" id="name" placeholder="Enter name" name="pname"
+            required>
+        </div>
+      </div>
+
+      <!-- step=any will accept decimal values (5.5) in number field step 0.01 means it will
+      accpet  upto 1/100 = min 0.01-->
+      <!-- if u dont do it , only 3 4 or 10 integer will be accepted -->
+
+      <div class="form-row">
+        <div class="col col-lg-3">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-balance-scale" style="color:#00cc6a"></i>
+                </div>
+              </div>
+              <input type="number" [formControl]="pQuantity" class="form-control" id="qt" placeholder="Enter quantity"
+                name="pqt" min="0.01" step="any" required>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-3">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-area-chart" style="color:#00cc6a"></i>
+                </div>
+              </div>
+              <input type="number" [formControl]="pRate" class="form-control" id="rate" placeholder="Enter rate"
+                name="prate" min="0.01" step="any" required>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <button id="submitBtn" type="submit" class="btn btn-success" (click)="createOnePurchase()">Submit</button>
+        </div>
+        <div class="col-md-2">
+          <button type="button" class="btn btn-primary" (click)="updateOnePurchase()">Update</button>
+        </div>
+        <div class="col-md-2">
+          <button type="button" class="btn btn-danger" (click)="DeleteOnePurchase()">Delete</button>
+        </div>
+        <div class="col-md-2">
+          <button type="button" class="btn btn-warning" (click)="setBlank()">Refresh</button>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <button type="button" class="btn btn-secondary" (click)="displayPurchaseReport()">Report</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- <p>Not loaded yet.</p> -->
+  <!-- <script>
+    $(function() {
+      $( "p" ).text( "The DOM is now loaded and can be manipulated." );
+    });
+    </script> -->
+</body>
+
+</html>

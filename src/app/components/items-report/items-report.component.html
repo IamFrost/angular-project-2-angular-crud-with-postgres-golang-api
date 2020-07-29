@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <!-- serial must : first jquery then popper then bootstrap -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+</head>
+
+<!-- class="text-left" -->
+
+<body>
+  <div class="container-fluid">
+    <div class="table-responsive">
+      <table id="purchaseTable" class="table table-hover table-bordered table-sm">
+        <!-- <caption>List of users</caption> -->
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let purchase of purchases">
+            <td>{{purchase.item_id}}</td>
+            <td>{{purchase.item_purchase_date.toString().slice(0,10).split('-').reverse().join('/')}}</td>
+            <th scope="row">{{purchase.item_name}}</th>
+            <td>{{purchase.item_quantity}}</td>
+            <td>{{purchase.item_rate}}</td>
+            <td>{{purchase.item_quantity*purchase.item_rate}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- <div class="row">
+    </div> -->
+
+    <div class="row">
+      <div class="col-md-2">
+        <button class="btn btn-primary" (click)='downloadPDF()'>Download as PDF</button>
+      </div>
+      <div class="col-md-2">
+        <!-- <button class="btn btn-secondary" (click)="tableToExcel('purchaseTable', 'W3C Example Table')">Download as
+          Excel</button> -->
+        <button class="btn btn-secondary" (click)='downloadExcel()'>Download as Excel</button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-secondary" (click)='print()'>Print</button>
+      </div>
+      <!-- <div class="col-md-2">
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary">Sony</button>
+          <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Tablet</a>
+            <a class="dropdown-item" href="#">Smartphone</a>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+  </div>
+</body>
+
+</html>
